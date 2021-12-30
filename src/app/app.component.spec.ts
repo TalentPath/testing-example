@@ -28,4 +28,23 @@ describe('AppComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.content span')?.textContent).toContain('Testing app is running!');
   });
+
+  it('should add numbers', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const app = fixture.componentInstance;
+    let result = app.add(10,15);
+    expect(result).toEqual(25)
+    //const compiled = fixture.nativeElement as HTMLElement;
+    //expect(compiled.querySelector('.content span')?.textContent).toContain('Testing app is running!');
+  });
+  
+  it('should let user know if non numbers were entered', ()=>{
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    let result = app.add('the', 'cat');
+    expect(result).toEqual('User entered non number');
+  })
 });
+
+
